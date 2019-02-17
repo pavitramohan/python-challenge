@@ -2,7 +2,7 @@ import os
 import csv
 
 cereal_csv = os.path.join("..", "Resources", "election_data.csv")
-output_file = os.path.join("..", "Resources", "output.txt")
+output_file = os.path.join("output.txt")
 candidates = {}
 totalVotes = 0
 winningCount = 0

@@ -2,7 +2,7 @@ import os
 import csv
 
 cereal_csv = os.path.join("..", "Resources", "budget_data.csv")
-output_file = os.path.join("..", "Resources", "output.txt")
+output_file = os.path.join("output.txt")
 
 # Open and read csv
 with open(cereal_csv, newline="") as csvfile:
@@ -28,7 +28,8 @@ with open(cereal_csv, newline="") as csvfile:
         totalRowsCount += 1
         totalProfitLoss += int(row[1])
 
-        presentChange = int(row[1]) - previousValue
+        if(totalRowsCount != 1):
+            presentChange = int(row[1]) - previousValue
         totalChange += presentChange
         previousValue = int(row[1])
 
@@ -44,7 +45,7 @@ lines = "Financial Analysis " + "\n" + \
             "-------------------"+ "\n" + \
             "Total Months: " + str(totalRowsCount) + "\n" + \
             "Total : " + str(totalProfitLoss)  + "\n" + \
-            "Average  Change : " + str(totalChange/totalRowsCount)  + "\n" + \
+            "Average  Change : " + str(totalChange/(totalRowsCount -1))  + "\n" + \
             "Greatest Increase in Profits : " + str(greatestIncreaseProfitsMonth) + " (" +str(greatestChangeProfits) + ") " + "\n" + \
             "Greatest Decrease in Profits : " + str(greatestDecreaseProfitsMonth) + " (" + str(greatestDecreaseProfits) + ")" 
 
